@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.75, user-scalable=no">
+    <link rel="shortcut icon" href="./img/control/tetrisicon.png" type="image/png">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"/>
+</head>
+<body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="logo">
+          <h1><a class="logoLink" href=https://saynotowars.github.io/TetrisProject-main>TETRIS</a></h1>
+        </div>
+        <div class="menu">
+          <ul class="menuList">
+            <li class="memuListLink"><a href="https://en.wikipedia.org/wiki/Tetris" target="_blank">About game</a></li>
+            <li class="memuListLink showTutorialPanel">Control</li>
+          </ul>
+        </div>
+        <div class="menuBurger">
+          <span></span>
+        </div>
+      </header>
+      <main class="content">
+
+        <div class="tutorial">
+          <div class="stopScaleKey">
+            <img src="./img/stopmovie.png" alt="" class="StopScaleImg tutorialImg">
+            <div><p>Use this button to comfortoble playing with swipe on mobile devices</p></div>
+          </div>
+          <div class="otherKeys">
+            <ul class="otherKeysList">
+              <li class="otherKeysItem">
+                <img src="./img/control/esckey.png" alt="" class="otherKeysImg tutorialImg">
+              </li>
+              <li class="otherKeysItem">
+                <img src="./img/control/spacekey.png" alt="" class="otherKeysImg tutorialImg">
+              </li>
+              <li class="otherKeysItem">
+                <img src="./img/control/pkey.png" alt="" class="otherKeysImg tutorialImg">
+              </li>
+            </ul>
+          </div>
+
+          <div class="containerForKeysAndArrows">
+            <div class="keys">
+              <ul class="keysList">
+                <li class="keysItems upkey">
+                  <img src="./img/control/wkey.png" alt="" class="keysImg tutorialImg">
+                </li>
+                <li class="keysItems leftkey">
+                  <img src="./img/control/akey.png" alt="" class="keysImg tutorialImg">
+                </li>
+                <li class="keysItems downkey">
+                  <img src="./img/control/skey.png" alt="" class="keysImg tutorialImg">
+                </li>
+                <li class="keysItems rightkey">
+                  <img src="./img/control/dkey.png" alt="" class="keysImg tutorialImg">
+                </li>
+              </ul>
+            </div>
+            <div class="arrows">
+              <ul class="arrowsList">
+                <li class="arrowsItems upArrow">
+                  <img src="./img/control/uparrow.png" alt="" class="arrowsImg tutorialImg">
+                </li>
+                <li class="arrowsItems leftArrow">
+                  <img src="./img/control/leftkey.png" alt="" class="arrowsImg tutorialImg">
+                </li>
+                <li class="arrowsItems downArrow">
+                  <img src="./img/control/downarrow.png" alt="" class="arrowsImg tutorialImg">
+                </li>
+                <li class="arrowsItems rightArrow">
+                  <img src="./img/control/rightarrow.png" alt="" class="arrowsImg tutorialImg">
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="swipe">
+            <ul class="swipeList">
+              <li class="swipeItems">
+                <img src="./img/control/leftswipe.png" alt="" class="swipeImg tutorialImg">
+              </li>
+              <li class="swipeItems">
+                <img src="./img/control/rightswipe.png" alt="" class="swipeImg tutorialImg">
+              </li>
+              <li class="swipeItems">
+                <img src="./img/control/downswipe.png" alt="" class="swipeImg tutorialImg">
+              </li>
+              <li class="swipeItems">
+                <img src="./img/control/upswipe.png" alt="" class="swipeImg tutorialImg">
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid" id="grid">
+            <canvas id="board" class="game-board"></canvas>
+            <div class="right-column">
+              <div>
+                <p>Score: <span id="score">0</span></p>
+                <p>Lines: <span id="lines">0</span></p>
+                <p>Level: <span id="level">0</span></p>
+                <canvas id="next" class="next"></canvas>
+              </div>
+              <button onpointerdown="stopScaling()" class="stopScaleButton">
+                <img src="./img/stopmovie.png" alt="">
+              </button>
+              <button onpointerdown="pause()" class="pauseButton">
+                <img src="./img/pause.png" alt="">
+              </button>
+              <button onpointerdown="play()" class="play-button">Play</button>
+            </div>
+          </div>
+
+          <div class="controlPanel" oncontextmenu = "return false" ondragstart="return false">
+            <button  onpointerdown="turn()" class="control turn">
+              <img src="./img/turn.png" alt="">
+            </button>
+            <button 
+               class="control left" id="leftControl">
+              <img src="./img/left.png" alt="">
+            </button>
+            <button  class="control right" id="rightControl">
+              <img src="./img/right.png" alt="">
+            </button>
+            <button  class="control down" id="dowmControl">
+              <img src="./img/dowm.png" alt="">
+            </button>
+            <button onpointerdown="speeddown()" class="control speedDown">
+              <img src="./img/speedDown.png" alt="">
+            </button>
+          </div>
+
+          <div class="showControlPanel">
+            <button class="showControlButton">
+              Control panel
+            </button>
+          </div>
+
+      </main>
+      <footer class="footer">
+          <div class="socialMediaList">
+            <div class="socialMediaItem">
+              <a href="https://github.com/sayNoToWars" target="_blank">
+                <img class="socialMediaImg" src="./img/github.svg" alt="">  
+              </a> 
+            </div>
+            <div class="socialMediaItem">
+              <a href="https://www.codewars.com/users/sayNoToWars" target="_blank">
+                <img class="socialMediaImg codewars" src="./img/codewars2.svg" alt="">  
+              </a> 
+            </div>
+            <div class="socialMediaItem">
+              <a href="https://web.telegram.org/z/" target="_blank">
+                <img class="socialMediaImg telegram" src="./img/telegram2.svg" alt="">  
+              </a> 
+            </div>
+            <div class="socialMediaItem">
+              <a href="https://www.facebook.com/" target="_blank">
+                <img class="socialMediaImg" src="./img/facebook2.svg" alt="">  
+              </a> 
+            </div>
+            <div class="socialMediaItem">
+              <a href="https://www.instagram.com/" target="_blank">
+                <img class="socialMediaImg" src="./img/instagram.svg" alt="">  
+              </a> 
+            </div>
+          </div>
+        
+      </footer>
+    </div>
+   
+    <script src="./js/constance.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/piece.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/swipe.js"></script>
+</body>
+</html>
